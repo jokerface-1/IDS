@@ -9,10 +9,15 @@ from Rules.icmpDetect import process_packet
 from Rules.synflood import synFlooder
 
 def process(pack):
-    spoofDetector(pack)
-    portScanDetection(pack)
-    process_packet(pack)
-    synFlooder(pack)
+    try:
+
+        spoofDetector(pack)
+        portScanDetection(pack)
+        process_packet(pack)
+        synFlooder(pack)
+    except Exception as e:
+        print(e)
+
 
 def startSniffer():
     sniff(prn=process)
